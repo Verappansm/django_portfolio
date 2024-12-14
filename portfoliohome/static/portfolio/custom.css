@@ -22,3 +22,66 @@ body {
         font-size: 5rem;
     }
 }
+
+/* Basic styling */
+#about {
+    text-align: center;
+    margin: 50px 0;
+  }
+  
+  .highlight {
+    color: #ff6f61;
+  }
+  
+  #tech-stack {
+    margin: 50px 0;
+  }
+  
+  #tech-stack h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .tech-category {
+    margin-bottom: 150px;
+  }
+  
+  .tech-category h3 {
+    font-size: 1.8em;
+    margin-bottom: 50px;
+    color: #444;
+    text-align: center;
+  }
+  
+  .tech-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .tech-logos img {
+    max-width: 150px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .tech-logos img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Carousel effect for the role text */
+  .carousel {
+    color: #ff6f61;
+    font-weight: bold;
+    font-size: 1.5em;
+    animation: changeRole 3s infinite;
+  }
+  
+  @keyframes changeRole {
+    0% { content: "developer"; }
+    33% { content: "data analyst"; }
+    66% { content: "IoT specialist"; }
+  }
+  
