@@ -1,0 +1,143 @@
+{% extends "portfoliohome/base.html" %}
+
+{% block content %}
+
+<style>
+  .contact-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 50px 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  .contact-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items in each row */
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+  }
+
+  .contact-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%; /* Ensure each item takes the full space of the grid column */
+    max-width: 175px; /* Optional: Restrict max width */
+  }
+
+  .contact-item:hover {
+    transform: translateY(-10px);
+  }
+
+  .contact-item i {
+    font-size: 2.5rem; /* Adjusted size */
+    transition: color 0.3s ease;
+  }
+
+  .contact-item:hover i {
+    color: #4e2a84;
+    transform: scale(1.1);
+  }
+
+  .contact-item a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .contact-item span {
+    display: block;
+    margin-top: 10px;
+    color: #333;
+    font-size: 1.2rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact-icons {
+      grid-template-columns: repeat(2, 1fr); /* 2 items per row for smaller screens */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-icons {
+      grid-template-columns: repeat(1, 1fr); /* Single column layout for very small screens */
+    }
+  }
+
+</style>
+
+<div class="contact-container">
+  <h2 class="contact-title">Contact Me</h2>
+  <div class="contact-icons">
+
+    <div class="contact-item">
+      <a href="mailto:verappan.sm2022@vitstudent.ac.in">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" width="40" height="40">
+        <span>Email</span>
+      </a>
+    </div>
+    
+    <div class="contact-item">
+      <a href="https://www.instagram.com/_._verappan_._/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="40" height="40">
+        <span>Instagram</span>
+      </a>
+    </div>
+    
+    <div class="contact-item">
+      <a href="https://www.linkedin.com/in/verappansm/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="40" height="40">
+        <span>LinkedIn</span>
+      </a>
+    </div>
+    
+    <div class="contact-item">
+      <a href="https://X.com/Verappansm" target="_blank">
+        <img src="https://commons.wikimedia.org/wiki/File:X_logo_2023.svg " alt="Twitter (X)" width="40" height="40">
+        <span>Twitter</span>
+      </a>
+    </div>
+    
+    <div class="contact-item">
+      <a href="https://github.com/Verappansm" target="_blank">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="40" height="40">
+        <span>GitHub</span>
+      </a>
+    </div>
+    
+    <div class="contact-item">
+      <a href="https://leetcode.com/u/verappansm/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode" width="40" height="40">
+        <span>LeetCode</span>
+      </a>
+    </div>
+    
+    <div class="contact-item">
+      <a href="https://www.codechef.com/users/verappansm" target="_blank">
+        <img src="https://s3.amazonaws.com/codechef_shared/sites/all/themes/abessive/cc-logo.png" alt="CodeChef" width="108" height="50">
+        <span>CodeChef</span>
+      </a>
+    </div>
+    
+    <div class="contact-item">
+      <a href="https://www.quora.com/profile/Verappan-Sm" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Quora_Q_icon.png" alt="Quora" width="40" height="40">
+
+        <span>Quora</span>
+      </a>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock %}

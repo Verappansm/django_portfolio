@@ -1,0 +1,95 @@
+{% extends "portfoliohome/base.html" %}
+
+{% block content %}
+<style>
+  .projects-container {
+      width: 90%;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+  }
+
+  .section-title {
+      text-align: center;
+      color: #6c5ce7;
+      margin: 20px 0;
+  }
+
+  .item {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f2f2f2;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s; /* Add transition for smooth effect */
+  }
+
+  .item:hover {
+      transform: translateY(-3px); /* Raise up effect on hover */
+      text-decoration: none;
+  }
+
+  .item h3 {
+      color: #6c5ce7;
+      margin-bottom: 10px;
+      text-decoration: none; /* Remove underline */
+  }
+
+  .item p {
+      color: #333;
+  }
+
+  .item .tech-stack {
+      font-weight: bold;
+      color: #555;
+  }
+
+  .item .links a {
+      color: #6c5ce7; /* Color for unvisited links */
+      text-decoration: none; /* Remove underline */
+  }
+
+  .item .links a:visited {
+      color: #6c5ce7; /* Color for visited links */
+  }
+
+  .item .links a:hover {
+      color: #4a3cbb; /* Change color on hover */
+      text-decoration: underline; /* Add underline on hover */
+  }
+</style>
+
+<div class="projects-container">
+    <h2 class="section-title">Patents</h2>
+    <hr>
+    {% for patent in patents %}
+    <div class="item">
+        <a href="{{ patent.google_link }}" target="_blank">
+            <h3>{{ patent.title }}</h3>
+        </a>
+        <p>{{ patent.description }}</p>
+    </div>
+    {% endfor %}<br>
+
+    <h2 class="section-title">Publications</h2>
+    <hr>
+    {% for publication in publications %}
+    <div class="item">
+        <a href="{{ publication.google_link }}" target="_blank">
+            <h3>{{ publication.title }}</h3>
+        </a>
+        <p>{{ publication.description }}</p>
+    </div>
+    {% endfor %}<br>
+
+    <h2 class="section-title">Projects</h2>
+    <hr>
+    {% for project in projects %}
+    <div class="item">
+        <a href="{{ project.github_link }}" target="_blank">
+            <h3>{{ project.title }} | {{ project.tech_stack }}</h3>
+        </a>
+        <p>{{ project.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

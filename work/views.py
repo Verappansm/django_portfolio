@@ -10,5 +10,11 @@ class WorkExperienceViewSet(viewsets.ModelViewSet):
     serializer_class = WorkExperienceSerializer
 
 def work_experience_view(request):
-    experiences = WorkExperience.objects.all()
-    return render(request, 'work/work_experience.html', {'experiences': experiences})
+    experiences = WorkExperience.objects.all().order_by('-start_date')
+    internships = experiences.filter(experience_type=WorkExperience.INTERNSHIP)
+    responsibilities = experiences.filter(experience_type=WorkExperience.RESPONSIBILITY) 
+    context = {
+        'internships': internships,
+        'responsibilities': responsibilities,
+    }
+    return render(request, 'work/work_experience.html', context)

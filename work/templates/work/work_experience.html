@@ -2,101 +2,146 @@
 {% extends "portfoliohome/base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+$(document).ready(function() {
+    gsap.from(".timeline-item", { duration: 1, y: 50, opacity: 0, stagger: 0.2 });
+    ScrollReveal().reveal('.timeline-item', { 
+        duration: 1000,
+        distance: '50px',
+        easing: 'ease-in-out',
+        interval: 200 
+    });
+});
+</script>
 
 <style>
-  /* Style for the timeline container */
-.timeline-container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-/* Basic styling for each timeline item */
-.timeline {
+/* Timeline section styling */
+.timeline-section {
+    margin-bottom: 50px;
     position: relative;
-    padding-left: 30px;
-    border-left: 2px solid #6c5ce7;
-    margin-left: 20px;
 }
 
-/* Styling for each timeline entry */
+.timeline h2 {
+    text-align: center;
+    color: #6c5ce7;
+}
+
 .timeline-item {
     position: relative;
-    margin-bottom: 30px;
-    padding-left: 30px;
-}
-
-/* Circle for each timeline date */
-.timeline-item:before {
-    content: "";
-    position: absolute;
-    left: -10px;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #6c5ce7;
-    border: 3px solid white;
-}
-
-/* Styling for the date inside each item */
-.timeline-date {
-    font-weight: bold;
-    color: #6c5ce7;
-    margin-bottom: 10px;
-}
-
-/* Styling for the content inside each item */
-.timeline-content {
-    background: #f2f2f2;
-    padding: 15px;
+    margin: 20px 0;
+    width: 45%;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.timeline-content h3 {
-    color: #6c5ce7;
-    margin-bottom: 10px;
+.internship {
+    background-color: #e0f7fa; /* Light blue for internships */
+    float: left;
+    clear: both;
 }
+
+.position {
+    background-color: #ffe0b2; /* Light orange for positions */
+    float: right;
+    clear: both;
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 5px;
+}
+
+
 
 .timeline-content p {
     color: #333;
 }
 
-/* Styling for smaller screens (responsive design) */
-@media screen and (max-width: 600px) {
-    .timeline {
-        padding-left: 20px;
-    }
+.timeline-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-    .timeline-item:before {
-        left: -5px;
-    }
+/* Timeline line */
+.timeline-section::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 20px; /* Start from the top of the first container */
+    height: calc(100% - 20px); /* Extend to the bottom */
+    width: 2px;
+    background-color: #6c5ce7; /* Line color */
+    z-index: 0;
+}
 
-    .timeline-content {
-        padding: 10px;
+.timeline-section::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .timeline-item {
+        width: 100%;
+        float: none;
+        text-align: left; /* Default to left for mobile */
     }
 }
 
+/* Alternate side for timeline items */
+.internship:nth-child(odd), .position:nth-child(odd) {
+    float: left;
+    text-align: right; /* Right justify */
+}
 
+.internship:nth-child(even), .position:nth-child(even) {
+    float: right;
+    text-align: left; /* Left justify */
+}
 </style>
 
-<div class="timeline-container">
-  <h2>My Work Experience</h2>
-  <div class="timeline">
-      {% for experience in experiences %}
-          <div class="timeline-item">
-              <div class="timeline-date">
-                  <p>{{ experience.start_date }} - {{ experience.end_date }}</p>
-              </div>
-              <div class="timeline-content">
-                  <h3>{{ experience.title }}</h3>
-                  <p>{{ experience.description }}</p>
-              </div>
-          </div>
-      {% endfor %}
-  </div>
-</div>
-{% endblock %}
+<div>
+    <h2>My Work Experience</h2>
+    <hr>
+    <!-- Internships Section -->
+    <div class="timeline-section">
+        <h3>Internships</h3><br>
+        {% for internship in internships %}
+        <div class="timeline-item internship animate__animated animate__fadeInUp">
+            <div class="timeline-date">
+                {{ internship.start_date }} - {{ internship.end_date|default:"Present" }}
+            </div>
+            <div class="timeline-content">
+                <h3>{{ internship.title }}</h3>
+                <p>{{ internship.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
+    <!-- Positions of Responsibility Section -->
+    <div class="timeline-section">
+        <h3>Positions of Responsibility</h3><br>
+        {% for responsibility in responsibilities %}
+        <div class="timeline-item position animate__animated animate__fadeInUp">
+            <div class="timeline-date">
+                {{ responsibility.start_date }} - {{ responsibility.end_date|default:"Present" }}
+            </div>
+            <div class="timeline-content">
+                <h3>{{ responsibility.title }}</h3>
+                <p>{{ responsibility.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
