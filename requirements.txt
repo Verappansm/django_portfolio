@@ -19,3 +19,6 @@ svglib==1.5.1
 tinycss2==1.4.0
 django-widget-tweaks==1.4.8
 setuptools
+whitenoise==6.7.0
+gunicorn==23.0.0
+pillow==10.3.0
